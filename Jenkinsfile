@@ -4,6 +4,9 @@ pipeline{
         jdk 'jdk17'
         terraform 'terraform'
     }
+    environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
     stages{
         stage('clean Workspace'){
             steps{
@@ -55,9 +58,14 @@ pipeline{
                 sh 'terraform plan'
             }
         }
+        // stage('Trivy terraform scan'){
+        //     steps{
+        //         sh 'tfsec . --no-color'
+        //     }
+        // }
         stage('Terraform apply'){
             steps{
-                sh 'terraform ${action} --auto approve'
+                sh 'terraform ${action} --auto-approve'
             }
         }
     }

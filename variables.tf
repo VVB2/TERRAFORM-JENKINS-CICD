@@ -17,7 +17,7 @@ variable "ami_id" {
 variable "bucket_name" {
   description = "The name of the S3 bucket to create"
   type        = string
-  default     = "vinodterraformstate"
+  default     = "vinod-bhat-s3-bucket"
 }
 
 variable "acl" {
